@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "com.annaraczynska" "\0"
             VALUE "FileDescription", "sushi_gdansk" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "sushi_gdansk" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.annaraczynska. All rights reserved." "\0"
             VALUE "OriginalFilename", "sushi_gdansk.exe" "\0"
             VALUE "ProductName", "sushi_gdansk" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

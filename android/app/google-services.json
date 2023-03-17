@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "406554411593",
+    "project_id": "sushi-gdansk-923",
+    "storage_bucket": "sushi-gdansk-923.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406554411593:android:bdb6b57f15f9fb46353598",
+        "android_client_info": {
+          "package_name": "com.annaraczynska.sushi_gdansk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406554411593-mvdmhu6kkdnbp719v5rj6kvo6h9mqtgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0MP5weNLcvGgfOKzcVmhnZgJQEDAnHxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406554411593-mvdmhu6kkdnbp719v5rj6kvo6h9mqtgl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
