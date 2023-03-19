@@ -1,13 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({
     Key? key,
   }) : super(key: key);
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  var errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,7 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
-                  controller: emailController,
+                  controller: widget.emailController,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: 'e-mail',
@@ -45,20 +52,24 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
-                  controller: passwordController,
+                  controller: widget.passwordController,
                   decoration: const InputDecoration(hintText: 'password'),
                   obscureText: true,
                 ),
               ),
+              Text(errorMessage),
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () async {
                   try {
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
-                      email: emailController.text,
-                      password: passwordController.text,
+                      email: widget.emailController.text,
+                      password: widget.passwordController.text,
                     );
                   } catch (error) {
+                    setState(() {
+                      errorMessage = error.toString();
+                    });
                     print(error);
                   }
                 },
