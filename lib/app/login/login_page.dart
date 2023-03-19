@@ -15,6 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var errorMessage = '';
+  var isCreatingAccount = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,10 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Hello again!',
+              Text(
+                  isCreatingAccount == true
+                      ? 'Create new account'
+                      : 'Hello again!',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
@@ -61,20 +65,57 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () async {
-                  try {
-                    await FirebaseAuth.instance.signInWithEmailAndPassword(
-                      email: widget.emailController.text,
-                      password: widget.passwordController.text,
-                    );
-                  } catch (error) {
-                    setState(() {
-                      errorMessage = error.toString();
-                    });
-                    print(error);
+                  if (isCreatingAccount == true) {
+                    try {
+                      // rejestracja
+                      await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                        email: widget.emailController.text,
+                        password: widget.passwordController.text,
+                      );
+                    } catch (error) {
+                      setState(() {
+                        errorMessage = error.toString();
+                      });
+                    }
+                  } else {
+                    // logowanie
+                    try {
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: widget.emailController.text,
+                        password: widget.passwordController.text,
+                      );
+                    } catch (error) {
+                      setState(() {
+                        errorMessage = error.toString();
+                      });
+                    }
                   }
+                  ;
                 },
-                child: Text('Sign in'),
+                child: Text(isCreatingAccount == true ? 'Join now' : 'Sign in'),
               ),
+              const SizedBox(height: 20),
+              if (isCreatingAccount == false) ...[
+                TextButton(
+                  onPressed: () async {
+                    setState(() {
+                      isCreatingAccount = true;
+                    });
+                  },
+                  child: Text('Create new account'),
+                ),
+              ],
+              if (isCreatingAccount == true) ...[
+                TextButton(
+                  onPressed: () async {
+                    setState(() {
+                      isCreatingAccount = false;
+                    });
+                  },
+                  child: Text('Already have an account?'),
+                ),
+              ],
             ],
           ),
         ),
