@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 245, 243, 227),
+      backgroundColor: Color(0xFFf2cc8f),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -34,11 +34,12 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
+                    color: Color(0xFF3d405b),
                   )),
               const SizedBox(height: 30),
               Container(
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 220, 211, 227),
+                  color: Color(0xFFf4f1de),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 10),
               Container(
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 220, 211, 227),
+                  color: Color(0xFFf4f1de),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
@@ -94,6 +95,8 @@ class _LoginPageState extends State<LoginPage> {
                   ;
                 },
                 child: Text(isCreatingAccount == true ? 'Join now' : 'Sign in'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF81b29a)),
               ),
               const SizedBox(height: 20),
               if (isCreatingAccount == false) ...[
@@ -104,6 +107,9 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                   child: Text('Create new account'),
+                  style: TextButton.styleFrom(
+                    primary: Color(0xFF3d405b),
+                  ),
                 ),
               ],
               if (isCreatingAccount == true) ...[
@@ -114,6 +120,9 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                   child: Text('Already have an account?'),
+                  style: TextButton.styleFrom(
+                    primary: Color(0xFF3d405b),
+                  ),
                 ),
               ],
             ],
