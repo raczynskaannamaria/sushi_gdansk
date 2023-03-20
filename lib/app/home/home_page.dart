@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sushi_gdansk/app/home/add_opinion/add_opinion_page_content.dart';
+import 'package:sushi_gdansk/app/home/my_account/my_account_page_content.dart';
+import 'package:sushi_gdansk/app/home/restaurants/restaurants_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -19,35 +23,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Center(child: Text('Sushi Gdańsk')),
+        backgroundColor: Color(0xFF81b29a),
+      ),
       backgroundColor: Color(0xFFf4f1de),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
-          return Center(
-            child: Text('First'),
-          );
+          return RestaurantsPageContent();
         }
         if (currentIndex == 1) {
-          return Center(
-            child: Text('Second'),
-          );
+          return AddOpinionPageContent();
         }
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Jesteś zalogowany jako ${widget.user.email}'),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                child: Text('Log out'),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF81b29a)),
-              ),
-            ],
-          ),
-        );
+        return MyAccountPageContent(email: widget.user.email);
       }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
