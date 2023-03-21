@@ -12,6 +12,7 @@ class AddOpinionPageContent extends StatefulWidget {
 
 var restaurantName = '';
 var sushiName = '';
+var rating = 3.0;
 
 class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
   @override
@@ -35,6 +36,22 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
                 sushiName = newValue;
               });
             },
+          ),
+          const SizedBox(height: 20),
+          Slider(
+            onChanged: (newValue) {
+              setState(() {
+                rating = newValue;
+              });
+            },
+            value: rating,
+            min: 1.0,
+            max: 6.0,
+            divisions: 10,
+            label: rating.toString(),
+            activeColor: Color(0xFFe07a5f),
+            inactiveColor: Color(0xFFf2cc8f),
+            thumbColor: Color(0xFF3d405b),
           ),
           const SizedBox(height: 20),
           ElevatedButton(
