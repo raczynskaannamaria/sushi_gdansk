@@ -42,11 +42,13 @@ class RestaurantsPageContent extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(document['name']),
+                            Text(document['name'],
+                                style: TextStyle(fontSize: 20)),
                             Text(document['sushi']),
                           ],
                         ),
-                        Text(document['rating'].toString()),
+                        Text(document['rating'].toString(),
+                            style: TextStyle(fontSize: 20)),
                       ],
                     ),
                   ),
